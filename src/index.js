@@ -5,6 +5,7 @@ const { h, Component, render, createElement } = window;
 // const React = {createElement};
 
 import Header from './header';
+import Illness from './illnessRepresentationClass';
 
 
 const data = {
@@ -4961,7 +4962,7 @@ class App extends Component {
             <Header {...header }/>
         {
             content.map(item => (
-                <pre>{JSON.stringify(item, null, 4)}</pre>
+                <Illness {...item }/>
         ))
         }
     </div>
