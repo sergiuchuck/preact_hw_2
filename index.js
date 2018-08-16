@@ -11,6 +11,10 @@ import window from 'preact';
 const { h, Component, render, createElement } = window;
 const React = {createElement};
 
+console.log('document.body');
+console.log(document.body);
+console.log('window.root');
+console.log(window.root);
 console.log(h);
 console.log(Component);
 console.log(render);
@@ -5004,5 +5008,6 @@ class App extends Component {
     )
     }
 }
-render(createElement(App, { message: "hhh" }), window.root);
+// render(createElement(App, { message: "hhh" }), window.root);
+render(createElement(App, { message: "hhh" }), document.body);
 console.log('finish');
