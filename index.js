@@ -8,12 +8,12 @@ console.log(`Hello ${name}, how are you ${time}?`);
 
 import window from 'preact';
 
-// const { h, Component, render, createElement } = window.preact;
-//
-// console.log(h);
-// console.log(Component);
-// console.log(render);
-// console.log(createElement);
+const { h, Component, render, createElement } = window;
+
+console.log(h);
+console.log(Component);
+console.log(render);
+console.log(createElement);
 
 console.log(window);
 console.log(window.h);
