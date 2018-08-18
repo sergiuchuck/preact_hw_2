@@ -20,7 +20,7 @@ const TestedMutation = (testedMutation) => (
         {console.log(Object.entries(testedMutation))}
         {console.log(typeof Object.entries(testedMutation))}
         {/*{JSON.stringify(testedMutation, null, 4)}*/}
-        {/*in order to remove last 'children' element*/}
+        {/*slice in order to remove last 'children' element*/}
         {Object.entries(testedMutation).slice(0,-1).map(([key, value]) => {
             console.log('testedMutation key:');
             console.log(key);
