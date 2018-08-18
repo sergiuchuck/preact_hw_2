@@ -39,7 +39,7 @@ class Leaf extends Component {
     static process(data) {
         console.log('Leaf.process is called with data:');
         console.log(data);
-        //exceptions for known cases
+        //suppress displaying warnings for known cases
         if(true === data["ok"]){
             return;
         }
