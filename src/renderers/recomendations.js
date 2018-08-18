@@ -2,38 +2,14 @@
 import window from 'preact';
 const { h, Component, render, createElement} = window;
 
-const PatientInfo = ({ id, dob, gender }) => (
-    <div class="patient-info">
-        <h1>Про пациента!!!!!!!!1111</h1>
-        <div><span class="field-name">id:</span> {id}</div>
-        <div><span class="field-name">dob:</span> {dob}</div>
-        <div><span class="field-name">gender:</span>{ gender === "M" ? "МУЖИК!!!" : "Female"} </div>
-    </div>
-);
-
-const HealthcareProfessional = ({ name, address_string_1, address_string_2 }) => (
-    <div>{name} --- {address_string_1} --- {address_string_2} </div>
-);
-
-const Header_ = ({
-                    patient_info, healthcare_professional,
-                    approver, test_metodology, laboratory_info }) => (
-    <div>
-        <PatientInfo {...patient_info }/><hr/>
-        <HealthcareProfessional {...healthcare_professional}/><hr/>
-    </div>
-);
-
-//https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_form_checkbox
-//{text: "Вы не находитесь в группе кардиориска.", selected: 1}
+//https://reactjs.org/docs/forms.html#handling-multiple-inputs
+//https://codepen.io/gaearon/pen/wgedvV?editors=0010
+//e.g. {text: "Вы не находитесь в группе кардиориска.", selected: 1}
 const Recomendation = ({text, selected}) => (
-    /*<input type="checkbox" name="recomendation" disabled> {text}</input>*/
-    /*<li>{text} { selected == 1 ? "Yes" : ""}</li>*/
     <li>
     <label>
     {text}
     <input
-        name="recomendation"
         type="checkbox"
         disabled
         checked={ selected == 1 ? true : false}/>
@@ -49,10 +25,10 @@ class Recomendations extends Component {
     render() {
         //assuming that this.state contains array, which is checked by Self.is_applicable
         const Recomendations_ = this.state.map((item_) => <Recomendation {...item_ }/>);
-        return <div>
-            recomendations:
+        return <div class="recomendations">
+            Рекомендации:
             {/*{JSON.stringify(this.state, null, 4)}*/}
-            <ul>{Recomendations_}</ul>
+            <ul>{Recomendations_}</ul><hr/>
         </div>
     }
 

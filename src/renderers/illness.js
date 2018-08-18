@@ -6,6 +6,7 @@ const { h, Component, render, createElement} = window;
 import {render_recursively_with_renderers} from "../app";
 import Leaf from "./unfamiliar_cases/leaf";
 import Recomendations from "./recomendations";
+import TestedMutations from "./tested_mutations";
 
 class Illness extends Component {
     constructor(data) {
@@ -30,7 +31,7 @@ class Illness extends Component {
         console.log('Illness.process is called with data:');
         console.log(data);
         // render(createElement(Illness, data), document.body);
-        render_recursively_with_renderers(data, [Recomendations, Leaf]);
+        render_recursively_with_renderers(data, [Recomendations, TestedMutations, Leaf]);
     }
 }
 
