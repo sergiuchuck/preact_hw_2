@@ -1,25 +1,11 @@
 // class is responsible for displaying recommendations in disease section
 import window from 'preact';
-import {rename_dangerous_keys} from "../utils";
-const { h, Component, render, createElement} = window;
+import {rename_dangerous_keys, translate_key} from "../utils";
 
-function translate_key(key) {
-    switch (key) {
-        case 'gene': return 'ген';
-        case 'freq': return 'частота';
-        case 'genotype': return 'генотип';
-        case 'result': return 'результат';
-        default: return key;
-    }
-}
+const { h, Component, render, createElement} = window;
 
 const TestedMutation = (testedMutation) => (
     <div>
-        {console.log('testedMutation item:')}
-        {console.log(testedMutation)}
-        {console.log(typeof testedMutation)}
-        {console.log(Object.entries(testedMutation))}
-        {console.log(typeof Object.entries(testedMutation))}
         {/*{JSON.stringify(testedMutation, null, 4)}*/}
         {/*slice in order to remove last 'children' element*/}
         {Object.entries(testedMutation).slice(0,-1).map(([key, value]) => {

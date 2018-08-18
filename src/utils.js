@@ -20,3 +20,18 @@ function rename_key_in_object(o, old_key, new_key) {
     }
     return o;
 }
+
+export function translate_key(key) {
+    switch (key) {
+        case 'gene':
+            return 'ген';
+        case 'freq':
+            return 'частота';
+        case 'genotype':
+            return 'генотип';
+        case 'result':
+            return 'результат';
+        default:
+            return key;
+    }
+}
