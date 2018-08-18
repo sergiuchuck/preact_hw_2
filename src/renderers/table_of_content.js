@@ -14,8 +14,8 @@ class TableOfContents extends Component {
 
     //static(in order to limit call constructor) method is used to determine can 'content' be rendered(displayed) with this class
     static is_applicable(content) {
-        console.log('TableOfContents is_applicable called with content:');
-        console.log(content);
+        // console.log('TableOfContents is_applicable called with content:');
+        // console.log(content);
 
         //todo is this check required?
         // only 'object' is expected

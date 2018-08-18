@@ -17,7 +17,10 @@ class Branch extends Component {
             i++;
         }
         this.state = string_from_key;
-        console.log('constructor Branch is called');
+        // console.log('constructor Branch is called with param:');
+        // console.log(key);
+        // console.log('this.state:');
+        // console.log(this.state);
     }
     render() {
         console.log('printing key');
@@ -42,7 +45,7 @@ class Branch extends Component {
     }
 
     static process(data) {
-        render(createElement(Branch, data), document.body);
+        render(createElement(Branch, Object.keys(data)[0]), document.body);
         var item = data[Object.keys(data)[0]];
         render_recursively(item);
     }
