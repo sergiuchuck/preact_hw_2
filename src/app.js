@@ -36,13 +36,14 @@ export function render_recursively_with_renderers(item, renderers) {
     console.log('in renderer with item:');
     console.log(item);
     console.log(typeof item);
+    console.log(renderers);
 
     for (let renderer of renderers) {
-        console.log(renderers);
-        console.log('renderer');
-        console.log(renderer);
-        console.log('renderer is applicable:');
-        console.log(renderer.is_applicable(item));
+        // console.log(renderers);
+        // console.log('renderer');
+        // console.log(renderer);
+        // console.log('renderer is applicable:');
+        // console.log(renderer.is_applicable(item));
         if (renderer.is_applicable(item)) {
             console.log('renderer is applicable:');
             console.log(renderer);
@@ -76,7 +77,7 @@ export function render_recursively_with_renderers(item, renderers) {
             console.log('recursive call for item:');
             console.log(item2);
             // render(createElement(App, item2), document.body);
-            render_recursively(item2);
+            render_recursively_with_renderers(item2, renderers);
             // return (
             //     <div>
             //         <App {...item }/>
