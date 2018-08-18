@@ -12,9 +12,6 @@ function translate_key(key) {
     }
 }
 
-//https://reactjs.org/docs/forms.html#handling-multiple-inputs
-//https://codepen.io/gaearon/pen/wgedvV?editors=0010
-//e.g. {text: "Вы не находитесь в группе кардиориска.", selected: 1}
 const TestedMutation = (testedMutation) => (
     <li>
         {console.log('testedMutation item:')}
@@ -44,7 +41,7 @@ class TestedMutations extends Component {
         //assuming that this.state contains array, which is checked by Self.is_applicable
         const TestedMutations_ = this.state.map((item_) => <TestedMutation {...item_ }/>);
         return <div class="tested_mutations">
-            TestedMutations:
+            <h4>Tested Mutations:</h4>
             {/*{JSON.stringify(this.state, null, 4)}*/}
             <ul>{TestedMutations_}</ul><hr/>
         </div>

@@ -26,7 +26,7 @@ class Recomendations extends Component {
         //assuming that this.state contains array, which is checked by Self.is_applicable
         const Recomendations_ = this.state.map((item_) => <Recomendation {...item_ }/>);
         return <div class="recomendations">
-            Рекомендации:
+            <h4>Рекомендации:</h4>
             {/*{JSON.stringify(this.state, null, 4)}*/}
             <ul>{Recomendations_}</ul><hr/>
         </div>
