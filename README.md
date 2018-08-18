@@ -8,7 +8,7 @@ And recursive function which loops through json and tries to apply renderers to 
 
 If some piece of json can be processed - do it. 
 
-If cannot - dive into it.
+If cannot - subdivide it or dive into it.
 
 If cannot - print it out with warning.
 
