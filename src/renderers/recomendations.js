@@ -24,22 +24,40 @@ const Header_ = ({
     </div>
 );
 
+//https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_form_checkbox
+//{text: "Вы не находитесь в группе кардиориска.", selected: 1}
+const Recomendation = ({text, selected}) => (
+    /*<input type="checkbox" name="recomendation" disabled> {text}</input>*/
+    /*<li>{text} { selected == 1 ? "Yes" : ""}</li>*/
+    <li>
+    <label>
+    {text}
+    <input
+        name="recomendation"
+        type="checkbox"
+        disabled
+        checked={ selected == 1 ? true : false}/>
+    </label>
+    </li>
+);
+
 class Recomendations extends Component {
     constructor(data) {
         super();
-        this.state = data;
+        this.state = data.recomendations;
     }
     render() {
+        //assuming that this.state contains array, which is checked by Self.is_applicable
+        const Recomendations_ = this.state.map((item_) => <Recomendation {...item_ }/>);
         return <div>
             recomendations:
-            {JSON.stringify(this.state, null, 4)}
+            {/*{JSON.stringify(this.state, null, 4)}*/}
+            <ul>{Recomendations_}</ul>
         </div>
     }
 
     //static(in order to limit call constructor) method is used to determine can 'content' be rendered(displayed) with this class
     static is_applicable(content) {
-        console.log('Recomendations.is_applicable is called with param:');
-        console.log(content);
         var keys = Object.keys(content);
         //single item "header" should be present
         // and "patient_info" and "healthcare_professional" properties must be present in "header"
