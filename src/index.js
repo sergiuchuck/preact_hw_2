@@ -1,11 +1,6 @@
 import window from 'preact';
-import Header from './renderers/header';
-import Illness from './renderers/illness';
-import render_recursively from './app';
+import {render_recursively} from './app';
 import data from './inputData';
-import TableOfContents from "./renderers/table_of_content";
-import Branch from "./renderers/unfamiliar_cases/branch";
-import Leaf from "./renderers/unfamiliar_cases/leaf";
 
 const { h, Component, render, createElement } = window;
 // const React = {createElement};
@@ -25,30 +20,6 @@ console.log(typeof data.ok.children);
 // console.log(typeof data.header);
 // has_childs(data.header);
 // print_childs(data.header);
-
-
-
-class App2 extends Component {
-    constructor({ message }) {
-        super();
-        this.state = data;
-    }
-    render({}, { header, results: { content, table_of_contents } }) {
-        console.log('content:');
-        console.log(content);
-        const ReferenceToHeader = renderers[0];
-        return (
-            <div>
-            <ReferenceToHeader {...header }/>
-        {
-            content.map(item => (
-                <Illness {...item }/>
-        ))
-        }
-    </div>
-    )
-    }
-}
 
 
 

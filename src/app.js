@@ -9,13 +9,13 @@ const { h, Component, render, createElement } = window;
 
 import Header from "./renderers/header";
 import Illness from "./renderers/illness";
-import Branch from "./renderers/unfamiliar_cases/branch";
+import Key from "./renderers/unfamiliar_cases/key";
 import Leaf from "./renderers/unfamiliar_cases/leaf";
 import TableOfContents from "./renderers/table_of_content";
 
-//Order matters.
-// E.g. Branch should be last. at least, following(after) Leaf.
-var renderers = [Header, Illness, TableOfContents, Leaf, Branch];
+// Order matters.
+// E.g. Leaf should be last.
+var renderers = [Header, Illness, TableOfContents, Leaf];
 
 function print_childs(item) {
     console.log('printing childs for ');
@@ -28,16 +28,21 @@ function print_childs(item) {
 }
 
 
-function render_recursively(item) {
+export function render_recursively(item) {
+    render_recursively_with_renderers(item, renderers);
+}
+
+export function render_recursively_with_renderers(item, renderers) {
     console.log('in renderer with item:');
     console.log(item);
     console.log(typeof item);
 
     for (let renderer of renderers) {
-        // console.log('renderer');
-        // console.log(renderer);
-        // console.log('renderer is applicable:');
-        // console.log(renderer.is_applicable(item));
+        console.log(renderers);
+        console.log('renderer');
+        console.log(renderer);
+        console.log('renderer is applicable:');
+        console.log(renderer.is_applicable(item));
         if (renderer.is_applicable(item)) {
             console.log('renderer is applicable:');
             console.log(renderer);
@@ -55,8 +60,11 @@ function render_recursively(item) {
     }
     console.log('no renderer is applicable:');
 
-    // var keys = Object.keys(item);
-    // if (keys.length > 1){//means some children are present
+    var keys = Object.keys(item);
+    //finally, need to keep this check. can not move this logic to separate renderer because cyclic dependencies occur;
+    // and that separate renderer needs to know context(list of renderers) of this function; because this context may vary
+    // e.g. if function is called from some renderer (Illness in my case)
+    if (keys.length > 1){//means some children are present
         Object.keys(item).forEach(function(key){
             console.log('key');
             console.log(key);
@@ -75,14 +83,15 @@ function render_recursively(item) {
             //     </div>
             // )
         });
-    // }
-    // else {//means single children is present
-    //     //only here info about key may be lost
-    //     //print key
-    //     render(createElement(Key, keys[0]), document.body);
-    //     //and render child
-    //     render_recursively(item[keys[0]]);
-    // }
+    }
+    else {
+        //means single children is present
+        //only here info about key may be lost
+        //print key
+        render(createElement(Key, keys[0]), document.body);
+        //and render child
+        render_recursively_with_renderers(item[keys[0]], renderers);
+    }
 }
 
 function has_childs(item) {
@@ -94,6 +103,3 @@ function has_childs(item) {
     console.log(Object.keys(item[keys[0]]));
     return Object.keys(item).length > 1 || Object.keys(item[keys[0]]).length > 0;
 }
-
-
-export default render_recursively;
