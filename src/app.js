@@ -9,13 +9,12 @@ const { h, Component, render, createElement } = window;
 
 import Header from "./renderers/header";
 import Illness from "./renderers/illness";
-import data from "./inputData";
 import Children from "./renderers/children";
-import Key from "./renderers/unfamiliar_cases/key";
+import Branch from "./renderers/unfamiliar_cases/branch";
 import Leaf from "./renderers/unfamiliar_cases/leaf";
 import TableOfContents from "./renderers/table_of_content";
 
-var renderers = [Header, Illness, TableOfContents, Leaf, Children];
+var renderers = [Header, Illness, TableOfContents, Leaf, Children, Branch];
 
 function print_childs(item) {
     console.log('printing childs for ');
@@ -55,8 +54,8 @@ function render_recursively(item) {
     }
     console.log('no renderer is applicable:');
 
-    var keys = Object.keys(item);
-    if (keys.length > 1){//means some children are present
+    // var keys = Object.keys(item);
+    // if (keys.length > 1){//means some children are present
         Object.keys(item).forEach(function(key){
             console.log('key');
             console.log(key);
@@ -75,14 +74,14 @@ function render_recursively(item) {
             //     </div>
             // )
         });
-    }
-    else {//means single children is present
-        //only here info about key may be lost
-        //print key
-        render(createElement(Key, keys[0]), document.body);
-        //and render child
-        render_recursively(item[keys[0]]);
-    }
+    // }
+    // else {//means single children is present
+    //     //only here info about key may be lost
+    //     //print key
+    //     render(createElement(Key, keys[0]), document.body);
+    //     //and render child
+    //     render_recursively(item[keys[0]]);
+    // }
 }
 
 function has_childs(item) {

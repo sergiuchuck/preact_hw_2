@@ -5,7 +5,7 @@ import render_recursively from './app';
 import data from './inputData';
 import Children from "./renderers/children";
 import TableOfContents from "./renderers/table_of_content";
-import Key from "./renderers/unfamiliar_cases/key";
+import Branch from "./renderers/unfamiliar_cases/branch";
 import Leaf from "./renderers/unfamiliar_cases/leaf";
 
 const { h, Component, render, createElement } = window;
