@@ -29,7 +29,7 @@ and navigate to [http://localhost:8080]
 ### Input data
 
 ```
-src/inputData.js
+./input.json
 ```
 
 [preview of processed json]: http://htmlpreview.github.io/?https://github.com/sergiuchuck/preact_hw_2/blob/master/docs/index.html

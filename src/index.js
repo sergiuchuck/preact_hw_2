@@ -1,8 +1,8 @@
 import window from 'preact';
 import {render_recursively} from './app';
-import data from './inputData';
+const json = require('../input.json');
 
 const { h, Component, render, createElement } = window;
 
-render_recursively(data);
+render_recursively(json);
 console.log('finish');
