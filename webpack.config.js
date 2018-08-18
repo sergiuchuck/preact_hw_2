@@ -12,7 +12,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'preact']
+                        presets: ['env', 'preact', 'stage-2']
                     }
                 }
             }

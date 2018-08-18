@@ -1,5 +1,37 @@
  // contains input big json
 
+ const data_ = {
+     "ok": true,
+     "ok_2": true,
+     "ok_deep": {"ok_deep_child": true},
+     "oks": [
+         {"ok_1": true},
+         {"ok_2": true},
+     ],
+     "header": {
+         "patient_info": {
+             "id": "123",
+             "dob": "20.11.1990",
+             "gender": "M"
+         },
+         "healthcare_professional": {
+             "name": "Carlos Doctor1Deploy M.D.",
+             "address_string_1": "37553 Sorrento Valley Blvd",
+             "address_string_2": "Greenwood, WA 98103 US"
+         },
+         "approver": {
+             "position": "Laboratory Director",
+             "name": "Linda Wasserman, M.D., Ph.D."
+         },
+         "test_metodology": "Genotyping by array-based evaluation of multiple molecular probes",
+         "laboratory_info": {
+             "collected_date": "13.04.2018",
+             "report_date": "14.04.2018",
+             "received_date": "15.04.2018"
+         }
+     }
+}
+
  const data = {
      "ok": true,
      "header": {

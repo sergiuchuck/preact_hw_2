@@ -1,21 +1,35 @@
-
 import window from 'preact';
+import Header from './renderers/header';
+import Illness from './renderers/illness';
+import render_recursively from './app';
+import data from './inputData';
+import Children from "./renderers/children";
+import TableOfContents from "./renderers/table_of_content";
+import Key from "./renderers/unfamiliar_cases/key";
+import Leaf from "./renderers/unfamiliar_cases/leaf";
 
 const { h, Component, render, createElement } = window;
 // const React = {createElement};
 
-import Header from './renderers/header';
-import Illness from './renderers/illness';
-import data from './inputData';
-
-console.log('typeof data');
-console.log(typeof data);
+// console.log('typeof data');
 console.log('typeof data.ok');
 console.log(typeof data.ok);
-console.log('typeof data.header');
-console.log(typeof data.header);
+console.log('typeof data.ok.children');
+console.log(typeof data.ok.children);
+// print_childs(data.ok);
+// console.log(typeof data);
+// has_childs(data.ok);
+// print_childs(data.ok);
+// has_childs(data.oks);
+// print_childs(data.oks);
+// console.log('typeof data.header');
+// console.log(typeof data.header);
+// has_childs(data.header);
+// print_childs(data.header);
 
-class App extends Component {
+
+
+class App2 extends Component {
     constructor({ message }) {
         super();
         this.state = data;
@@ -23,9 +37,10 @@ class App extends Component {
     render({}, { header, results: { content, table_of_contents } }) {
         console.log('content:');
         console.log(content);
+        const ReferenceToHeader = renderers[0];
         return (
             <div>
-            <Header {...header }/>
+            <ReferenceToHeader {...header }/>
         {
             content.map(item => (
                 <Illness {...item }/>
@@ -35,6 +50,10 @@ class App extends Component {
     )
     }
 }
-// render(createElement(App, { message: "hhh" }), window.root);
-render(createElement(App, { message: "hhh" }), document.body);
+
+
+
+render_recursively(data);
+// render(createElement(App, data), document.body);
+// render(createElement(App2, { message: "hhh" }), document.body);
 console.log('finish');

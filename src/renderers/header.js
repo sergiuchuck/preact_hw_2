@@ -1,12 +1,12 @@
 import window from 'preact';
-const { h, Component } = window;
+const { h, Component, render, createElement} = window;
 
 const PatientInfo = ({ id, dob, gender }) => (
     <div class="patient-info">
         <h1>Про пациента!!!!!!!!1111</h1>
         <div><span class="field-name">id:</span> {id}</div>
         <div><span class="field-name">dob:</span> {dob}</div>
-        <div><span class="field-name">gender:</span>{ gender == "M" ? "МУЖИК!!!" : "Female"} </div>
+        <div><span class="field-name">gender:</span>{ gender === "M" ? "МУЖИК!!!" : "Female"} </div>
     </div>
 );
 
@@ -30,21 +30,23 @@ class Header extends Component {
     }
     render() {
         return <div>
-            <PatientInfo {...this.state.patient_info }/><hr/>
-            q
-            <HealthcareProfessional {...this.state.healthcare_professional}/><hr/>
+            <PatientInfo {...this.state.header.patient_info }/><hr/>
+            <HealthcareProfessional {...this.state.header.healthcare_professional}/><hr/>
 
         </div>
     }
 
     //static(in order to limit call constructor) method is used to determine can 'content' be rendered(displayed) with this class
     static is_applicable(content) {
-        //todo is this check required?
-        // only 'object' is expected
-        if (typeof content  !== "object") {return false;}
 
-        // "patient_info" and "healthcare_professional" properties must be present
-        return "patient_info" in content && "healthcare_professional" in content;
+        var keys = Object.keys(content);
+        //single item "header" should be present
+        // and "patient_info" and "healthcare_professional" properties must be present in "header"
+        return keys.length === 1 && "header" in content && "patient_info" in content["header"] && "healthcare_professional" in content["header"];
+    }
+
+    static process(data) {
+        render(createElement(Header, data), document.body);
     }
 }
 
