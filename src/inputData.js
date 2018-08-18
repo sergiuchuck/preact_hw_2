@@ -1,5 +1,5 @@
 // contains input big json
-const data = {
+const data_ = {
     "ref": "C",
     "ok": true,
     "ok_2": true,
@@ -71,7 +71,7 @@ const data = {
     }
 }
 
-const data_ = {
+const data = {
     "ok": true,
     "header": {
         "patient_info": {

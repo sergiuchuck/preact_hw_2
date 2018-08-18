@@ -1,5 +1,6 @@
 // class is responsible for displaying recommendations in disease section
 import window from 'preact';
+import {rename_dangerous_keys} from "../utils";
 const { h, Component, render, createElement} = window;
 
 function translate_key(key) {
@@ -13,7 +14,7 @@ function translate_key(key) {
 }
 
 const TestedMutation = (testedMutation) => (
-    <li>
+    <div>
         {console.log('testedMutation item:')}
         {console.log(testedMutation)}
         {console.log(typeof testedMutation)}
@@ -27,13 +28,21 @@ const TestedMutation = (testedMutation) => (
             {JSON.stringify(key, null, 4)}
             return <li>{translate_key(key)} --- {value}</li>;
         })}
-    </li>
+        <hr/>
+    </div>
 );
 
 class TestedMutations extends Component {
     constructor(data) {
         super();
-        this.state = data.tested_mutations;
+        if ("tested_mutations" in data) {
+            this.state = data.tested_mutations
+        }
+        if ("denovo_mutations" in data) {
+            this.state = data.denovo_mutations
+        }
+        //need to rename "ref" keys because preact crashes when encounters it
+        this.state.map((tested_mutation) => rename_dangerous_keys(tested_mutation));
     }
     render() {
         console.log('TestedMutations render:');
@@ -52,7 +61,11 @@ class TestedMutations extends Component {
         var keys = Object.keys(content);
         //single item "header" should be present
         // and "patient_info" and "healthcare_professional" properties must be present in "header"
-        return keys.length === 1 && "tested_mutations" in content && content["tested_mutations"] instanceof Array ;
+        return keys.length === 1 && (
+            ("tested_mutations" in content && content["tested_mutations"] instanceof Array)
+                ||
+            ("denovo_mutations" in content && content["denovo_mutations"] instanceof Array)
+        ) ;
     }
 
     static process(data) {

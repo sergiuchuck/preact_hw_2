@@ -16,12 +16,10 @@ class Key extends Component {
             i++;
         }
         this.state = string_from_key;
-        console.log('constructor Key is called');
     }
     render() {
-        console.log('printing key');
-        console.log(this.state);
-        return <pre>dive deep in unfamiliar piece of json with key: {this.state}</pre>
+        //suppress displaying of these warnings because all such cases are known
+        // return <pre>dive deep in unfamiliar piece of json with key: {this.state}</pre>
         // return <div><span class="key-name">key:</span> {this.state}</div>
     }
 
