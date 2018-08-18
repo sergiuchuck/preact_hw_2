@@ -9,12 +9,13 @@ const { h, Component, render, createElement } = window;
 
 import Header from "./renderers/header";
 import Illness from "./renderers/illness";
-import Children from "./renderers/children";
 import Branch from "./renderers/unfamiliar_cases/branch";
 import Leaf from "./renderers/unfamiliar_cases/leaf";
 import TableOfContents from "./renderers/table_of_content";
 
-var renderers = [Header, Illness, TableOfContents, Leaf, Children, Branch];
+//Order matters.
+// E.g. Branch should be last. at least, following(after) Leaf.
+var renderers = [Header, Illness, TableOfContents, Leaf, Branch];
 
 function print_childs(item) {
     console.log('printing childs for ');

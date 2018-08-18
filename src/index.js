@@ -3,7 +3,6 @@ import Header from './renderers/header';
 import Illness from './renderers/illness';
 import render_recursively from './app';
 import data from './inputData';
-import Children from "./renderers/children";
 import TableOfContents from "./renderers/table_of_content";
 import Branch from "./renderers/unfamiliar_cases/branch";
 import Leaf from "./renderers/unfamiliar_cases/leaf";
