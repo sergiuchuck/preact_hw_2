@@ -13,10 +13,22 @@ If cannot - subdivide it or dive into it.
 If cannot - print it out with warning.
 
 
+### Requirements
+
+Installed [npm] 
+
 ### Preview of processed json
 
-[preview of processed json]
+[preview of processed json on github pages]
 
+[preview of processed json on htmlpreview.github.io]
+
+
+### How to install dependencies
+
+```bash
+~: npm install
+```
 
 ### How to run the project
 
@@ -32,5 +44,7 @@ and navigate to [http://localhost:8080]
 ./input.json
 ```
 
-[preview of processed json]: http://htmlpreview.github.io/?https://github.com/sergiuchuck/preact_hw_2/blob/master/docs/index.html
+[preview of processed json on htmlpreview.github.io]: http://htmlpreview.github.io/?https://github.com/sergiuchuck/preact_hw_2/blob/master/docs/index.html
+[preview of processed json on github pages]: https://sergiuchuck.github.io/preact_hw_2
 [http://localhost:8080]: http://localhost:8080 
+[npm]: https://www.npmjs.com/get-npm
